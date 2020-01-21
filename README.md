@@ -1,7 +1,9 @@
 # BlazorAppPrint
 
 BlazorWebassemblyApplication
+
 .Net Core 3.1 
+
 VisualStudio2019 Preview
 
 Demo[https://blazorappprint.firebaseapp.com/]
