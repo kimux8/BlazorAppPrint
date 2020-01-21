@@ -1,12 +1,10 @@
 # BlazorAppPrint
 
-BlazorWebassemblyApplication
+BlazorWebassemblyApplication<br/>
+.Net Core 3.1 <br/>
+VisualStudio2019 Preview<br/>
 
-.Net Core 3.1 
-
-VisualStudio2019 Preview
-
-Demo[https://blazorappprint.firebaseapp.com/]
+[Demo](https://blazorappprint.firebaseapp.com/)
 
 ## paper.cssを活用して名刺アプリケーションを印刷するアプリのBlazor版
 
