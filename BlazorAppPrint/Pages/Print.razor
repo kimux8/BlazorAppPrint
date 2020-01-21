@@ -1,0 +1,64 @@
+﻿@page  "/print"
+@layout PrintLayout
+@inject Person person
+
+@inject NavigationManager  navMgr
+@inject IJSRuntime JSRuntime
+
+<table class="print">
+    <tbody>
+        @for (int i = 0; i < 5; i++)
+        {
+            <tr>
+                <td>
+                    <img class="logo" alt="" src="logo.png" />
+                    <p class="section" style="@person.GetSectionStyle()">@person.P0_2</p>
+                    <div class="Name" style="@person.GetNameStyle()">
+                        <div style="float:left;margin-right:5mm">
+                            <p class="FirstKana">@person.P1</p>
+                            <p class="KanaSpan" />
+                            <p class="FirstName">@person.P3</p>
+                        </div>
+                        <div style="float:left">
+                            <p class="LastKana">@person.P2</p>
+                            <p class="KanaSpan" />
+                            <p class="LastName">@person.P4</p>
+                        </div>
+                    </div>
+                    <p class="address">@person.P5_2</p>
+
+                </td>
+                <td>
+                    <img class="logo" alt="" src="logo.png" />
+                    <p class="section" style="@person.GetSectionStyle()">@person.P0_2</p>
+                    <div class="Name" style="@person.GetNameStyle()">
+                        <div style="float:left;margin-right:5mm">
+                            <p class="FirstKana">@person.P1</p>
+                            <p class="KanaSpan" />
+                            <p class="FirstName">@person.P3</p>
+                        </div>
+                        <div style="float:left">
+                            <p class="LastKana">@person.P2</p>
+                            <p class="KanaSpan" />
+                            <p class="LastName">@person.P4</p>
+                        </div>
+                    </div>
+                    <p class="address">@person.P5_2</p>
+
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+
+@code{
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // 印刷ダイアログ表示
+        await JSRuntime.InvokeAsync<bool>("printwindow", null);
+    }
+}

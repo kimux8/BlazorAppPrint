@@ -1,0 +1,96 @@
+﻿@page "/"
+
+@inject NavigationManager  navMgr
+@inject Person person
+
+<div class="container-fluid">
+    <h2>名刺印刷アプリ Blazor版</h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <form>
+                <div class="form-group">
+                    <label for="">部署名</label>
+                    <textarea class="form-control" rows="3" @bind="@person.P0" />
+                </div>
+                <div class="form-group row">
+                    <label class="col-12" for="">氏名（ふりがな）</label>
+                    <div class="col-6">
+                        <input type="text" class="form-control col-xs-12" @bind-value="@person.P1" @bind-value:event="oninput" />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" @bind-value="@person.P2" @bind-value:event="oninput" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-12" for="">氏名（漢字）</label>
+                    <div class="col-6">
+                        <input type="text" class="form-control col-xs-12" @bind-value="@person.P3" @bind-value:event="oninput" />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" @bind-value="@person.P4" @bind-value:event="oninput" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">連絡先</label>
+                    <div>
+                        <textarea class="form-control" rows="6" @bind="@person.P5" />
+                    </div>
+                </div>
+                <div class="float-right">
+                    <button class="btn btn-primary" style="width:100px;margin-right:15px" @onclick="OnPrint">印　刷</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <table class="preview">
+                <tbody>
+                    <tr>
+                        <td id="origin">
+                            <img class="logo" alt="" src="logo.png"/>
+                            <p class="section" style="@person.GetSectionStyle()">@person.P0_2</p>
+                            <div class="Name" style="@person.GetNameStyle()">
+                                <div style="float:left; margin-right:5mm">
+                                    <p class="FirstKana">@person.P1</p>
+                                    <p class="KanaSpan" />
+                                    <p class="FirstName" >@person.P3</p>
+                                </div>
+                                <div style="float:left">
+                                    <p class="LastKana" >@person.P2</p>
+                                    <p class="KanaSpan" />
+                                    <p class="LastName" >@person.P4</p>
+                                </div>
+                            </div>
+                            <p class="address" >@person.P5_2</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+        </div>
+    </div>
+</div>
+
+@code{
+
+    protected override void OnInitialized()
+    {
+        person.P0 = @"営業推進部営業1課
+シニアマネージャー";
+
+        person.P1 = "きい";
+        person.P2 = "たいちろう";
+        person.P3 = "紀伊";
+        person.P4 = "太一郎";
+        person.P5 = @"〒100-8111
+東京都千代田区千代田1-1
+ロイヤルパレスパークビル 15F
+電話: 03-1111-1111(代表) FAX: 03-2222-2222
+携帯: 090-3333-3333
+mail: kii-taichiro@dummy.lo.go.jp";     
+    }
+
+    void OnPrint()
+    {
+        navMgr.NavigateTo("/print");
+    }
+
+}
