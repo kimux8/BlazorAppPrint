@@ -2,7 +2,7 @@
 
 ## paper.cssを活用して名刺アプリケーションを印刷するアプリのBlazor版
 
-paper.cssを使ってブラウザだけで名刺を印刷する
+papercss_labelprint　paper.cssを使ってブラウザだけで名刺を印刷する
 [https://github.com/okoppe8/papercss_labelprint](https://github.com/okoppe8/papercss_labelprint)
 
 paper.cssを使ってブラウザだけで名刺を印刷する
